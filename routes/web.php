@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 // use Illuminate\Support\Facades\Cache;
  
 // Route::get('/cache', function () {
@@ -209,3 +208,7 @@ Route::get('/collection/method/contain_method','CollectionController@containMeth
 Route::get('/collection/method/partition_method','CollectionController@partitionMethod');
 Route::get('/collection/method/each_method','CollectionController@eachMethod2');
 
+// use \App\Http\Livewire\tuts\UserDetails;
+//===================Livewire
+
+Route::get('/livewire/user_details', \App\Http\Livewire\Tuts\UserDetails::class);

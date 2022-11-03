@@ -23,6 +23,9 @@
 
      @notifyCss
 
+
+      @livewireStyles
+
 </head>
 <body>
     <div id="app">
@@ -81,10 +84,20 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <main class="py-4">
+            @yield('main')
+        </main>
+        <main class="py-4">
+           {{$main}}
+        </main>
     </div>
      @include('notify::messages')
                       
                      
      @notifyJs
+
+
+
+      @livewireScripts
 </body>
 </html>
