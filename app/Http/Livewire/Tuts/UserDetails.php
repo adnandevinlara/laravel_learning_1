@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class UserDetails extends Component
 {
-    public $first_name="adan";
+    public $first_name="adnan";
     public $last_name;
     public function render()
     {
@@ -14,6 +14,7 @@ class UserDetails extends Component
     }
 
     public function update(){
-        $this->first_name = 'zaib';
+        $this->first_name = 'Sahir';
+        $this->last_name = 'zaib';
     }
 }

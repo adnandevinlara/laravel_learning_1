@@ -7,7 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>
+        @yield('title')? @yield('title') : {{config('app.name', 'Laravel')}};
+    </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +26,7 @@
      @notifyCss
 
 
-      @livewireStyles
+    @livewireStyles
 
 </head>
 <body>
@@ -87,17 +89,78 @@
         <main class="py-4">
             @yield('main')
         </main>
-        <main class="py-4">
+
+        <main class="container py-4">
            {{$main}}
         </main>
     </div>
-     @include('notify::messages')
+          
+     
+
+
+
+
+     <!-- livewire Events -->
+
+     <script>
+        window.addEventListener('openTheShop', event => {
+            Livewire.emit('openStore');
+        });
+
+        // Livewire.on('openStore', () => {
+        //     alert('ad');
+            // console.log(s'javascript event listened to');
+        // });
+
+        // Livewire.on('postAdded', () => {
+        //     alert('A post was added with the id of: ' + postId);
+        // });
+
+
+        // document.addEventListener('livewire:load', () => {
+        //     window.livewire.on('postAdded', () => {
+        //         alert('A post was added with the id of 1');
+        //     });
+        // });
+
+        
+         
+/*
+=========================tags
+*/
+
+     // create
+      window.addEventListener('closeTagCreateModel', event => {
+            $('#exampleModalCenter').modal('toggle');
+      });
+     // update
+      window.addEventListener('closeTagEditModel', event => {
+            $('#tagEditModel').modal('toggle');
+      });
+
+      window.addEventListener('openTagEditModel', event => {
+            $('#tagEditModel').modal('toggle');
+      });
+
+      window.addEventListener('showToast', event => {
+            
+      });
+
+     
+   </script>
+
+
+
+
+  @include('notify::messages')
                       
-                     
-     @notifyJs
+    @notifyJs  
+
+    @livewireScripts
 
 
+  
 
-      @livewireScripts
+
 </body>
 </html>

@@ -212,3 +212,10 @@ Route::get('/collection/method/each_method','CollectionController@eachMethod2');
 //===================Livewire
 
 Route::get('/livewire/user_details', \App\Http\Livewire\Tuts\UserDetails::class);
+Route::get('/livewire/actions', \App\Http\Livewire\Tuts\ConnectButton::class);
+Route::get('/livewire/contact_form', \App\Http\Livewire\Tuts\ContactForm::class);
+
+Route::group(['prefix'=>'livewire', 'as' => 'tags.'], function(){
+	Route::get('/tags',\App\Http\Livewire\Tuts\Crud\Index::class)->name('index'); 
+	// so route name will be like so tags.index
+});
