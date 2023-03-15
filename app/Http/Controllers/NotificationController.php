@@ -11,6 +11,7 @@ use App\Notifications\MyFirstNotification;
 use App\User;
 use App\Events;
 use App\Events\NewUserHasRegisteredEvent;
+use App\Events\PurchaseSuccessful;
 
 use App\Jobs\SendNewUserRegisteredNotification;
 
@@ -30,7 +31,7 @@ use App\Jobs\TaskFour;
 
 use Illuminate\Support\Facades\Bus;
 
-
+use App\Purchase;
 class NotificationController extends Controller
 {
     public function sendNotification(Request $request){
@@ -154,5 +155,34 @@ class NotificationController extends Controller
 
     public function users(Request $request){
         return User::all();
+    }
+
+
+    public function successfullPurchase(){
+
+
+        // $purchase = Purchase::find(6);
+        // $items = (json_decode($purchase->items));
+        // return $items[1];
+        // dd('end');
+
+        $items = array(1,2,3,4,5,6,7,8);
+        $purchase  = Purchase::create([
+            'name' => 'adnanzaib486',
+            'address' => 'Lahore pakistan',
+            'city' => 'Lahore',
+            'zip_code' => '1244',
+            'items' => json_encode($items)
+        ]);
+
+        $purchase['email'] = 'adnanzaib486@gmail.com';
+
+        // dd($purchase);
+
+        if($purchase){
+            // send new order mail to admin
+            PurchaseSuccessful::dispatch($purchase);
+            dump('order created and email is dispatched!');
+        }
     }
 }

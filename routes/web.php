@@ -27,13 +27,13 @@ use Illuminate\Support\Facades\Route;
 
 // method 1
 
-App::bind('App\SocialMedia\Facebook',function($app){
-	// dd($app);
+// App::bind('App\SocialMedia\Facebook',function($app){
+// 	// dd($app);
 
-	// return new App\SocialMedia\Facebook(config('services.facebook'));
-// 	//ye object return hoga constructor method mein
+// 	return new App\SocialMedia\Facebook(config('services.facebook'));
+// // 	//ye object return hoga constructor method mein
 
-});
+// });
 
 
 // $fb = App::make('App\SocialMedia\Facebook');
@@ -52,7 +52,10 @@ App::bind('App\SocialMedia\Facebook',function($app){
 // get servcie container in UserController
 
 Route::get('/users','UserController@index');
+Route::get('/users-with-service-provider','UserController@getUserWithServiceProvider');
 Route::get('/allusers','UserController@getUsers');
+// for facades
+Route::get('/facade','UserController@getDataUsingFacade');
 
 
 
@@ -67,15 +70,15 @@ Route::get('/', function () {
 
 	// laravel facades
 
-	// using direcr path path
-	// $fb = new App\SocialMedia\Facebook(config('services.facebook'));
+	// using directory path path
+	$fb = new App\SocialMedia\Facebook(config('services.facebook'));
 	// using service provider
 	// $fb = App::make('App\SocialMedia\Facebook');
-	// return $fb->getClientID();
+	return $fb->getClientID();
 	// using facades
 	// return FB::getClientID();
 
-    return view('welcome');
+    // return view('welcome');
 });
 
 Auth::routes();
@@ -129,6 +132,11 @@ Route::get('/group-chain-job','NotificationController@chainJobs');
 Route::get('/group-betch-job','NotificationController@batchJobs');
 
 
+
+
+// ===================Event and listeners
+
+Route::get('/create-purchase','NotificationController@successfullPurchase');
 
 
 
@@ -211,11 +219,11 @@ Route::get('/collection/method/each_method','CollectionController@eachMethod2');
 // use \App\Http\Livewire\tuts\UserDetails;
 //===================Livewire
 
-Route::get('/livewire/user_details', \App\Http\Livewire\Tuts\UserDetails::class);
-Route::get('/livewire/actions', \App\Http\Livewire\Tuts\ConnectButton::class);
-Route::get('/livewire/contact_form', \App\Http\Livewire\Tuts\ContactForm::class);
+// Route::get('/livewire/user_details', \App\Http\Livewire\Tuts\UserDetails::class);
+// Route::get('/livewire/actions', \App\Http\Livewire\Tuts\ConnectButton::class);
+// Route::get('/livewire/contact_form', \App\Http\Livewire\Tuts\ContactForm::class);
 
-Route::group(['prefix'=>'livewire', 'as' => 'tags.'], function(){
-	Route::get('/tags',\App\Http\Livewire\Tuts\Crud\Index::class)->name('index'); 
-	// so route name will be like so tags.index
-});
+// Route::group(['prefix'=>'livewire', 'as' => 'tags.'], function(){
+// 	Route::get('/tags',\App\Http\Livewire\Tuts\Crud\Index::class)->name('index'); 
+// 	// so route name will be like so tags.index
+// });

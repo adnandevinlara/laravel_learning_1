@@ -9,25 +9,28 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-
-class NewUserHasRegisteredEvent
+use App\Purchase;
+class PurchaseSuccessful
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $user;
-    // s=it gone be accessible from listener class
+
+    public $purchase;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct(Purchase $purchase)
     {
-        $this->user = $user;
+        $this->purchase = $purchase;
+        // now we have set the public property purchase
+        // with the purchase pass through the event.
+       
     }
 
     /**
      * Get the channels the event should broadcast on.
-     Note Broadcast event implement with websocket, therefore i comment it out
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */

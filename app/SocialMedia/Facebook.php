@@ -16,8 +16,8 @@ class Facebook{
 	public function setFacebookCred($facebook){
 		// dd($facebook);
 		$this->client_id = $facebook['client_id'];
-		$this->secret_key = $facebook['secret_key'];
-		$this->redirect_url = $facebook['redirect_url'];
+		$this->secret_key = $facebook['client_secret'];
+		$this->redirect_url = $facebook['redirect'];
 	}
 
 	public function getClientID(){
