@@ -238,6 +238,8 @@ return [
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
+        "Custom" => \App\helpers\Custom::class,
+
     ],
 
 ];

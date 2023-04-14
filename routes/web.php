@@ -227,3 +227,14 @@ Route::get('/collection/method/each_method','CollectionController@eachMethod2');
 // 	Route::get('/tags',\App\Http\Livewire\Tuts\Crud\Index::class)->name('index'); 
 // 	// so route name will be like so tags.index
 // });
+
+
+// ==================Helper function=======
+
+Route::get('/helper/function-based',function(){
+	return message('this is helper function call');
+});
+
+Route::get('/helper/class-based',function(){
+	return Custom::uppercase();
+});
