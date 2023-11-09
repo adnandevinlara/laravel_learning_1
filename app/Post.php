@@ -12,7 +12,12 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'body'
+        'title', 'slug', 'body', 'image', 'user_id'
     ];
+
+
+    public function auther(){
+    	return $this->belongsTo('App\User','user_id');
+    }
 
 }

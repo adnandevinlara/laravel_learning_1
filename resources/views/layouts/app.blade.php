@@ -8,7 +8,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        @yield('title')? @yield('title') : {{config('app.name', 'Laravel')}};
+        
+        @yield('title', config('app.name', 'Laravel Learning'))
     </title>
 
     <!-- Scripts -->
@@ -86,6 +87,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        {{--
         <main class="py-4">
             @yield('main')
         </main>
@@ -93,6 +95,7 @@
         <main class="container py-4">
            {{$main}}
         </main>
+        --}}
     </div>
           
      
