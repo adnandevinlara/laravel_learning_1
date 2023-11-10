@@ -283,7 +283,24 @@ Route::get('/helper/class-based',function(){
 
 
 // =======Posts ======================
-Route::get('/all_posts','PostController@index')->name('post.index');
-Route::get('/posts/create','PostController@create')->name('post.create');
-Route::post('/posts/store','PostController@store')->name('post.store');
-Route::get('/post/delete/{id}','PostController@delete')->name('post.delete');
+/*
+define single or multiple middlewares
+*/
+// Route::middleware(['auth'])->group(function(){
+/*
+define single middleware + route prefix
+*/
+// Route::group(['middleware' => 'auth', 'prefix' => 'auther'],function(){
+/*
+define multiple middlewares + route prefix + prefix route name
+*/
+// Route::group(['middleware' => ['auth'], 'prefix' => 'auther', 'as' => 'auther.'],function(){
+/*
+define multiple middlewares + route prefix
+*/
+Route::group(['middleware' => ['auth'], 'prefix' => 'auther'],function(){
+		Route::get('/all_posts','PostController@index')->name('post.index');
+		Route::get('/posts/create','PostController@create')->name('post.create');
+		Route::post('/posts/store','PostController@store')->name('post.store');
+		Route::get('/post/delete/{id}','PostController@delete')->name('post.delete');
+});
