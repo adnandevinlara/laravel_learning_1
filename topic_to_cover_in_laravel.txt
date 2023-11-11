@@ -1,0 +1,15 @@
+Topic to cover 11/11/23
+1. Setup Admin Gaurd
+a. provide defined in auth.php
+b. guard defined in auth.php
+
+2. Define post routes with middleware auth:auther / auth:user
+
+3. Login with Admin Gaurd
+a. create auther register page
+b. create auther login page 
+
+4. Apply middleware to posts routes
+
+5. Allow to view and delete post related to auther. (using gate/policies)
+

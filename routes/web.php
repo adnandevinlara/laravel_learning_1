@@ -216,6 +216,46 @@ Route::get('/collection/method/contain_method','CollectionController@containMeth
 Route::get('/collection/method/partition_method','CollectionController@partitionMethod');
 Route::get('/collection/method/each_method','CollectionController@eachMethod2');
 
+Route::get('/collection/method/example',function(){
+	$users = \App\User::get();
+	// return $users;
+	// dd($users->toArray()); // array containing objects
+	// dd($users->all()); // result will come with eloquant model
+	// dd($users->pluck('name'));
+
+	// for each loop mostly use to modify data on each iteration
+	// each method return us whole collection
+	$output = $users->each(function($user){
+		$user->isActive = rand(0,1);
+		$user->year = date('Y');
+		unset($user->updated_at);
+	});
+	// dd($output);
+
+	// filter method condtionally work, mean based on conditon it return data.
+
+	// $output = $users->filter(function($user){
+	// 	return $user->id < 5; 
+	// }); 
+
+
+	// dd($output->toArray());
+
+	// search method on array
+	$list = $users->pluck('email');
+	$output = $list->search('adnanzaib486@gmail.com');
+	dd($output); // return data position
+
+
+	// Note : all() method convert data / return data in array.
+	// collection method ally on collections record.
+
+
+
+});
+
+
+
 // use \App\Http\Livewire\tuts\UserDetails;
 //===================Livewire
 
@@ -237,4 +277,43 @@ Route::get('/helper/function-based',function(){
 
 Route::get('/helper/class-based',function(){
 	return Custom::uppercase();
+});
+
+
+
+
+
+
+// ===================Auther Authentication=======================
+Route::get('/auther/login','autherAuth\LoginController@showLoginForm')->name('auther.login');
+Route::post('/auther/login','autherAuth\LoginController@login')->name('auther.login');
+
+
+
+
+// ========================Posts ======================
+
+Route::group(['middleware' => ['auth:web'], 'prefix' => 'user'], function(){
+	// dashboard
+	Route::get('/dashboard',function(){
+		return view('home');
+	});
+	// posts routes
+	Route::get('/all_posts','PostController@index')->name('post.index');
+	Route::get('/posts/view/{id}','PostController@viewAny')->name('post.view');
+	Route::get('/posts/create','PostController@create')->name('post.create');
+	Route::post('/posts/store','PostController@store')->name('post.store');
+	Route::get('/post/delete/{id}','PostController@delete')->name('post.delete');
+});
+
+Route::group(['middleware' => ['auth:auther'], 'prefix' => 'auther'], function(){
+	// dashboard
+	Route::get('/dashboard',function(){
+		return view('auther.dashboard');
+	});
+	// posts routes
+	// Route::get('/all_posts','PostController@index')->name('post.index');
+	// Route::get('/posts/create','PostController@create')->name('post.create');
+	// Route::post('/posts/store','PostController@store')->name('post.store');
+	// Route::get('/post/delete/{id}','PostController@delete')->name('post.delete');
 });
