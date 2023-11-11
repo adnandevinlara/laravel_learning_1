@@ -282,6 +282,7 @@ Route::get('/helper/class-based',function(){
 
 
 
+<<<<<<< HEAD
 
 
 // ===================Auther Authentication=======================
@@ -317,3 +318,27 @@ Route::group(['middleware' => ['auth:auther'], 'prefix' => 'auther'], function()
 	// Route::post('/posts/store','PostController@store')->name('post.store');
 	// Route::get('/post/delete/{id}','PostController@delete')->name('post.delete');
 });
+=======
+// =======Posts ======================
+/*
+define single or multiple middlewares
+*/
+// Route::middleware(['auth'])->group(function(){
+/*
+define single middleware + route prefix
+*/
+// Route::group(['middleware' => 'auth', 'prefix' => 'auther'],function(){
+/*
+define multiple middlewares + route prefix + prefix route name
+*/
+// Route::group(['middleware' => ['auth'], 'prefix' => 'auther', 'as' => 'auther.'],function(){
+/*
+define multiple middlewares + route prefix
+*/
+Route::group(['middleware' => ['auth'], 'prefix' => 'auther'],function(){
+		Route::get('/all_posts','PostController@index')->name('post.index');
+		Route::get('/posts/create','PostController@create')->name('post.create');
+		Route::post('/posts/store','PostController@store')->name('post.store');
+		Route::get('/post/delete/{id}','PostController@delete')->name('post.delete');
+});
+>>>>>>> da6431175b47998f83f2e4e5b6079c74e32f5d00

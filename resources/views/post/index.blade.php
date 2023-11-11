@@ -39,6 +39,7 @@
 					      <td>{{$post->title}}</td>
 					      <td>{{$post->auther['name']}}</td>
 					      <td>{{date_format($post->created_at,'Y-m-d')}}</td>
+<<<<<<< HEAD
 					      <td>
 					      	@can('delete', $post)
 					      	<a href="{{route('post.delete',['id'=>$post->id])}}">Del</a>
@@ -47,6 +48,9 @@
 					      	<a href="{{route('post.view',['id'=>$post->id])}}">View</a>
 					      	@endcan
 					      </td>
+=======
+					      <td><a href="{{route('post.delete',['id'=>$post->id])}}">Del</a></td>
+>>>>>>> da6431175b47998f83f2e4e5b6079c74e32f5d00
 					    </tr>
 					    @endforeach
 					    

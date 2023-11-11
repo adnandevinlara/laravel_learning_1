@@ -49931,8 +49931,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! G:\ADNAN\laravel_8_fresh_setup\example-app\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! G:\ADNAN\laravel_8_fresh_setup\example-app\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\laravel_learning\laravel_7\example-app\example-app\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\laravel_learning\laravel_7\example-app\example-app\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
