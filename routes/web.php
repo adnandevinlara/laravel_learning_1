@@ -282,7 +282,7 @@ Route::get('/helper/class-based',function(){
 
 
 
-<<<<<<< HEAD
+
 
 
 // ===================Auther Authentication=======================
@@ -318,7 +318,7 @@ Route::group(['middleware' => ['auth:auther'], 'prefix' => 'auther'], function()
 	// Route::post('/posts/store','PostController@store')->name('post.store');
 	// Route::get('/post/delete/{id}','PostController@delete')->name('post.delete');
 });
-=======
+
 // =======Posts ======================
 /*
 define single or multiple middlewares
@@ -341,4 +341,4 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'auther'],function(){
 		Route::post('/posts/store','PostController@store')->name('post.store');
 		Route::get('/post/delete/{id}','PostController@delete')->name('post.delete');
 });
->>>>>>> da6431175b47998f83f2e4e5b6079c74e32f5d00
+

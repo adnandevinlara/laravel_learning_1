@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
 use App\Post;
 use Illuminate\Support\Str;
-<<<<<<< HEAD
+
 use Auth;
 class PostController extends Controller
 {
@@ -19,13 +19,13 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $this->authorize('viewAny',$post);
         return view('post.view', compact('post'));
-=======
+
 class PostController extends Controller
 {
     public function index(){
     	$posts = Post::with('auther')->latest()->paginate(10);
     	return view('post.index',compact('posts'));
->>>>>>> da6431175b47998f83f2e4e5b6079c74e32f5d00
+
     }
     public function create(){
     	return view('post.create');
@@ -46,14 +46,14 @@ class PostController extends Controller
     }
     public function delete($id){
     	$delete = Post::findOrFail($id);
-<<<<<<< HEAD
+
         // way 1 to check authorize action
         // $this->authorize('view', $delete);
         // way 2 to check authorize action ( get auth user )
         $user = Auth::user();
         if(!$user->can('delete',$delete)) abort(401, 'Unauthorized: You do not have permission to perform this action.');
-=======
->>>>>>> da6431175b47998f83f2e4e5b6079c74e32f5d00
+
+
     	$image_name = $delete->image;
     	if($delete->delete()){
     		if($image_name != null || $image_name != '') $this->deleteImage($image_name);
